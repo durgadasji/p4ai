@@ -1,0 +1,16 @@
+# Everything in this directory is a negative image of what you protect: the terms
+# you designate as private, the names you have claimed but are not ready to
+# publish, the files that stay in. That makes this the most sensitive directory
+# in the installation and the one whose accidental publication would be worse
+# than anything the gates catch.
+#
+# So the rule is deny-by-default rather than a list of filenames. A list has to
+# be updated every time you add a file here, and the update that gets forgotten
+# is the one that matters. Everything is ignored except this file, which is
+# committed so the rule travels with the package.
+#
+# Keep it in place even if you move these files elsewhere. If you keep your
+# dotfiles in version control, which is the case this exists for, deleting these
+# two lines publishes the lot on your next commit.
+*
+!.gitignore

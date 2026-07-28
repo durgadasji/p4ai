@@ -1,0 +1,17 @@
+{
+  "name": "pt4ai",
+  "description": "Precision Toolkit for AI. An operating discipline for working with a model: read the source before asserting it, verify a claim before stating it, and gates that say what they are not checking instead of reporting clean. Adds always-on rules, a precision-mode skill, write-time hooks, and pre-publish checks that keep private material out of public work.",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "keywords": [
+    "discipline",
+    "verification",
+    "writing-rules",
+    "privacy",
+    "pre-publish-gates",
+    "hooks"
+  ],
+  "author": {
+    "name": "Regis Chapman"
+  }
+}

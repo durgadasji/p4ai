@@ -1,0 +1,29 @@
+# House style. Copy this to ~/.claude/precision/house-style.txt and make it yours.
+#
+# One rule per line, each a regular expression matched case-insensitively.
+# A plain word or phrase works as you would expect. Comments start with #.
+#
+# Nothing here is shipped as a default. These are one author's tastes, offered so
+# you have somewhere to start, not so you inherit them. Delete what you disagree
+# with; a rule you did not choose will only teach you to ignore the alerts.
+
+# The em dash. A well-known marker of machine-written prose, which is the reason
+# for banning it rather than anything about the character.
+\u2014
+
+# Filler that carries no information.
+\bgenuinely\b
+\bhonestly\b
+\bstraightforward\b
+it's worth noting
+\bimportantly\b
+needless to say
+I'd be happy to
+great question
+
+# Process language inside documents. A document states what is true now rather
+# than narrating its own editing history.
+earlier draft
+corrected here
+this was overstated
+reworded from
