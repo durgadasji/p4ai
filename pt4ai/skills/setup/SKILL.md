@@ -20,6 +20,31 @@ present in it before writing anything else. That file is what keeps everything
 you are about to write out of a commit. If it is missing, copy it from
 `${CLAUDE_PLUGIN_ROOT}/precision/.gitignore` first and say why you did.
 
+## Show where they are, every time
+
+Once the prerequisites pass, mark the interview as started:
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-panel.py" --begin 1
+```
+
+Then before each question, print the panel and update the number:
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-panel.py" --begin <question number>
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-panel.py"
+```
+
+Show its output verbatim, then ask the question underneath it. Do not describe
+the panel, retype it, or summarise what it says. It reads the directory at the
+moment it runs, which is the whole reason it is a script: a panel assembled from
+what you remember writing could report a file that is not there, and this is a
+package that refuses that everywhere else.
+
+The marker it writes outlives the session. An interview abandoned at question
+three leaves a record saying so, which is what makes a half-finished install
+visible instead of silent. Remove it only at the end, and only after the proof.
+
 ## Ask these, in this order
 
 **1. Where does your material live?**
@@ -125,6 +150,31 @@ before trusting it.
 
 ## Afterwards
 
-Tell them what is armed and what is not, by name. Anything they skipped will
-announce itself once per session, which is the design rather than a nag, and
+Print the panel one last time and clear the marker, in that order, so the final
+state they see is read from disk rather than asserted:
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-panel.py"
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/setup-panel.py" --end
+```
+
+Clear it even when they stopped early. A marker left behind after they chose to
+stop would report an abandoned interview when what happened was a decision, and
+this package does not confuse the two.
+
+Then offer the status line, which is the one surface that does not scroll:
+
+```
+cp "${CLAUDE_PLUGIN_ROOT}/scripts/statusline-segment.sh" ~/.claude/precision/
+```
+
+Adding it means editing their own status line script or their settings, which is
+outside this directory and therefore outside what setup owns. Ask before
+touching either, show them the one line you would add, append to what is already
+there rather than replacing it, and tell them that deleting that line is the
+whole of the undo. If they decline, say nothing further about it: an offer
+refused is not a thing to raise again.
+
+Finally, tell them what is armed and what is not, by name. Anything they skipped
+will announce itself once per session, which is the design rather than a nag, and
 they can invoke this skill again to change any answer.
