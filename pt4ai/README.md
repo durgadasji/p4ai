@@ -44,9 +44,12 @@ Only one standing obligation is wired by default, the read-first reminder, becau
 
 ## Install
 
-Not published yet. There is no marketplace to add and no package to install, so
-the commands are absent rather than written ahead of the thing working. When it
-publishes, this section carries them.
+Two commands, then a conversation.
+
+```
+/plugin marketplace add durgadasji/p4ai
+/plugin install pt4ai@p4ai
+```
 
 Installing delivers the hooks, both skills and the manifest. Nothing to copy, no
 `settings.json` to edit: `hooks/hooks.json` wires the hooks for you, and they are
