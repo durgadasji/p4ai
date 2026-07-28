@@ -108,10 +108,13 @@ def check_precision_exposure(session, report):
                "from the same place. The rule lives in " +
                os.path.join(d, ".gitignore") + ".")
 
-# Point this at your own pattern file. The format is documented above.
-PATTERNS = "/absolute/path/to/your/canon-patterns.json"
-
-PLACEHOLDER = "/absolute/path/to/your/canon-patterns.json"
+# Your pattern file, beside your other answers. It lives there rather than as a
+# constant in this file because a setting edited into shipped source is a setting
+# a plugin update silently reverts, and the person who loses it has no way to
+# know: the hook goes on running and simply stops checking what it used to.
+# PRECISION_CANON overrides it for a one-off run against a different set.
+PATTERNS = os.environ.get("PRECISION_CANON") or os.path.join(
+    PRECISION_DIR, "canon-patterns.json")
 
 
 def notice(msg, session):
@@ -157,12 +160,6 @@ def main():
         return
 
     check_precision_exposure(session, emit)
-
-    if PATTERNS == PLACEHOLDER:
-        notice("PATTERNS still points at the placeholder path, so this hook is "
-               "checking nothing. Set PATTERNS to your own pattern file, or "
-               "remove the hook from settings.json.", session)
-        return
 
     try:
         with open(PATTERNS, encoding="utf-8") as fh:

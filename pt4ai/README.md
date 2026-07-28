@@ -102,6 +102,17 @@ bash scripts/link-check.sh <path>
 The prerequisite check runs anywhere. The other two need bash, so on Windows they
 want WSL or git-bash; the hooks and the skills do not.
 
+`tests/run.py` proves two of the checks catch a case known to be bad, and stay
+quiet on a clean one. Run it after changing a hook:
+
+```
+python3 tests/run.py
+```
+
+Each fixture came from a failure that survived several edit sessions in a real
+corpus. A check that has never failed has not been tested, and one that fires on
+everything is worse than none, so both directions are asserted.
+
 ### The standards servers
 
 Optional, and the other four layers run unchanged without them. They are
