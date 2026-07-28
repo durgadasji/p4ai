@@ -102,7 +102,7 @@ bash scripts/link-check.sh <path>
 The prerequisite check runs anywhere. The other two need bash, so on Windows they
 want WSL or git-bash; the hooks and the skills do not.
 
-`tests/run.py` proves two of the checks catch a case known to be bad, and stay
+`tests/run.py` proves every check catches a case known to be bad, and stays
 quiet on a clean one. Run it after changing a hook:
 
 ```
